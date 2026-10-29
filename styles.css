@@ -98,6 +98,9 @@ footer {
   width: 4rem;
   border-radius: 50px;
 }
+.share-container {
+  position: relative;
+}
 
 .btn-share {
   border: none;
@@ -107,10 +110,71 @@ footer {
   height: 3.2rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  position: relative;
+  z-index: 2;
 }
 
 .btn-share:active {
   background-color: var(--Grayish-Blue);
+}
+
+/* Share popup */
+.share-popup {
+  position: absolute;
+  bottom: calc(100% + 1.6rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  padding: 1.4rem 2.8rem;
+  border-radius: 10px;
+  background: var(--Dark-Grayish-Blue);
+  box-shadow: 0 8px 20px rgb(72 85 106 / 20%);
+  z-index: 1;
+}
+
+.share-label {
+  color: var(--Light-Grayish-Blue);
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+}
+
+.share-popup a {
+  display: flex;
+  align-items: center;
+}
+
+.share-popup a img {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.share-popup[hidden] {
+  display: none;
+}
+
+/* Triangle underneath the popup */
+.share-popup::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-top-color: var(--Dark-Grayish-Blue);
+  border-bottom: 0;
+}
+
+@media (max-width: 65rem) {
+  html {
+    font-size: 56.25%;
+  }
+  .btn-share {
+    margin-bottom: 0px;
+  }
 }
 
 @media (max-width: 45rem) {
@@ -149,5 +213,46 @@ footer {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 0px;
+  }
+  footer {
+    position: relative;
+  }
+  .share-container {
+    position: static;
+  }
+
+  .btn-share {
+    position: relative;
+    z-index: 3;
+    background-color: var(--Light-Grayish-Blue);
+    margin-bottom: 1rem;
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+  .share-popup {
+    width: calc(100% + 6.1rem);
+    height: 7rem;
+    position: absolute;
+    justify-content: start;
+    bottom: 0;
+    gap: 2.4rem;
+    padding: 1.8rem 3.2rem;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    z-index: 0;
+  }
+  .share-popup a img {
+    display: block;
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+  .informations-section {
+    padding-bottom: 0px;
+  }
+  .share-popup::after {
+    display: none;
+  }
+  .profile {
+    padding-bottom: 2rem;
   }
 }
